@@ -1,4 +1,6 @@
-﻿//Part 01 : Theoretical Questions
+
+
+//Part 01 : Theoretical Questions
 
 //Q1
 //[a] the balance is exposed as a public property which allows any one to access and modifiy it directly, which can lead to unintended consequences and bugs in the code. 
