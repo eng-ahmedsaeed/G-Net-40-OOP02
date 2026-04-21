@@ -1,0 +1,14 @@
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.AssemblyInfoInputs.cache
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.AssemblyInfo.cs
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.csproj.CoreCompileInputs.cache
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\bin\Debug\net8.0\OOP2.exe
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\bin\Debug\net8.0\OOP2.deps.json
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\bin\Debug\net8.0\OOP2.runtimeconfig.json
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\bin\Debug\net8.0\OOP2.dll
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\bin\Debug\net8.0\OOP2.pdb
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.dll
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\refint\OOP2.dll
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.pdb
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\OOP2.genruntimeconfig.cache
+D:\Route Fullstack\Backend\Slides\OOP Assigment\OOP2\OOP2\obj\Debug\net8.0\ref\OOP2.dll
