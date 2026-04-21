@@ -31,6 +31,8 @@
 //[a] these means that these data field is not related to foreach Instance of the class but rather iterator is shared among all the instencies of the class , its called using the class name , on the other hand the item is the normal data field which iterator bonded to foreach instance and could me accessed using the Pointer of these specific instance
 //[b] No static Methods cannot access non static data field because static methods are not associated with any instance of the class and do not have access to instance-specific data. Non-static data fields are tied to specific instances of the class, and static is tied to the class itself, so it cannot access instance-specific data. To access non-static data fields, you need to create an instance of the class and use that instance to access the data field.
 
+using System.ComponentModel.Design;
+
 public enum Tickettype_e {
     Standard,
         VIP,
@@ -39,8 +41,8 @@ public enum Tickettype_e {
 
 public struct Seat_e
 {
-    char Row;
-    int Number;
+    public char Row;
+   public  int Number;
 }
 
 public class Ticket {
@@ -52,7 +54,7 @@ public class Ticket {
     public  String MovieName{
     get{ return moviename; }    
     set{
-            if (value == null)
+            if (string.IsNullOrEmpty(value))
                 return;
             else
                 moviename = value;
@@ -62,7 +64,8 @@ public class Ticket {
     }
 
     public Tickettype_e TicketType{  get;set;}
-    public Seat_e Seat { get; set; }
+    public Seat_e Seat { get;
+        set; }
     public double Price
     {
         get { return price; }
@@ -108,7 +111,7 @@ public class Cinema
         }
         set
         {
-            if (i >= 20)
+            if (i >= 20||i<0)
                 return;
             Tickets[i] = value;
         }
@@ -165,18 +168,129 @@ public class BookingHelper
     }
 }
 ////////5
-public class Console
+public class App
 {
     static void Main(string[] args)
     {
+        System.Console.WriteLine("==============Ticket Booking=========");
+        bool flag;
         Ticket t1 = new Ticket();
         System.Console.WriteLine("Please Enter Data for Ticket 1");
         System.Console.WriteLine("Movie Name: ");
         t1.MovieName = System.Console.ReadLine();
-        System.Console.WriteLine("Ticket Type (0-Standard,1-Vip,2-Imax): ");
-         bool flag =int.TryParse(System.Console.ReadLine(),out  int type);
+        int type;
+        do
+        {
+            System.Console.WriteLine("Ticket Type (0-Standard,1-Vip,2-Imax): ");
 
+            flag = int.TryParse(System.Console.ReadLine(), out  type);
+        } while (!flag);
+        t1.TicketType = (Tickettype_e)type;
+        Seat_e s = new();
+        System.Console.WriteLine("Seat Row(A-Z): ");
+        s.Row = System.Console.ReadLine()[0];
+        int numb;
+        do
+        {
+            System.Console.WriteLine("Seat Number: ");
 
+            flag = int.TryParse(System.Console.ReadLine(), out numb);
+        } while (!flag);
+        s.Number = numb;
+        t1.Seat = s;
+        double price;
+        do
+        {
+            System.Console.WriteLine("Price: ");
 
+            flag = double.TryParse(System.Console.ReadLine(), out price);
+        } while (!flag);
+        t1.Price = price;
+
+        ///t2
+        Ticket t2 = new Ticket();
+        System.Console.WriteLine("Please Enter Data for Ticket 2");
+        System.Console.WriteLine("Movie Name: ");
+        t2.MovieName = System.Console.ReadLine();
+        do
+        {
+            System.Console.WriteLine("Ticket Type (0-Standard,1-Vip,2-Imax): ");
+
+            flag = int.TryParse(System.Console.ReadLine(), out  type);
+        } while (!flag);
+        t2.TicketType = (Tickettype_e) type;
+        Seat_e s2 = new();
+        System.Console.WriteLine("Seat Row(A-Z): ");
+        s2.Row = System.Console.ReadLine()[0];
+        do
+        {
+            System.Console.WriteLine("Seat Number: ");
+
+            flag = int.TryParse(System.Console.ReadLine(), out numb);
+        } while (!flag);
+        s2.Number = numb;
+        t2.Seat = s2;
+        do
+        {
+            System.Console.WriteLine("Price: ");
+
+            flag = double.TryParse(System.Console.ReadLine(), out price);
+        } while (!flag);
+        t2.Price = price;
+        ///t3
+        Ticket t3 = new Ticket();
+        System.Console.WriteLine("Please Enter Data for Ticket 3");
+        System.Console.WriteLine("Movie Name: ");
+        t3.MovieName = System.Console.ReadLine();
+        do
+        {
+            System.Console.WriteLine("Ticket Type (0-Standard,1-Vip,2-Imax): ");
+
+            flag = int.TryParse(System.Console.ReadLine(), out type);
+        } while (!flag);
+        t3.TicketType = (Tickettype_e)type;
+        Seat_e s3 = new();
+        System.Console.WriteLine("Seat Row(A-Z): ");
+        s3.Row = System.Console.ReadLine()[0];
+        do
+        {
+            System.Console.WriteLine("Seat Number: ");
+
+            flag = int.TryParse(System.Console.ReadLine(), out numb);
+        } while (!flag);
+        s3.Number = numb;
+        t3.Seat = s3;
+        do
+        {
+            System.Console.WriteLine("Price: ");
+
+            flag = double.TryParse(System.Console.ReadLine(), out price);
+        } while (!flag);
+        t3.Price = price;
+
+        Cinema c = new Cinema();
+        c[0] = t1;
+        c[1] = t2;
+        c[2] = t3;
+        System.Console.WriteLine("=============All Tickets==============");
+        for(int i =0; i<3; i++)
+        {
+            System.Console.Write("Ticket #" + i + "|" + c[i].MovieName + "|" + c[i].TicketType + "|" + "Seat:" + c[i].Seat.Row+"-"+ c[i].Seat.Number+"|"+"Price: " + c[i].Price+"|"+"After Tax: " + c[i].PriceAfterTax +"EGP");
+            System.Console.WriteLine("");
+        }
+        System.Console.WriteLine("=============Search by movie=============");
+        System.Console.WriteLine("Enter movie name to search about:");
+        string movie = System.Console.ReadLine();
+
+      Ticket t =  c.GetMovie(movie);
+        if (t == null) 
+        System.Console.WriteLine("No tickets for these Movie");
+       else
+            System.Console.Write("Found:"+  "|" + t.MovieName + "|" + t.TicketType + "|" + "Seat:" + t.Seat.Row + "-" + t.Seat.Number + "|" + "Price: " + t.Price + "|" + "After Tax: " + t.PriceAfterTax + "EGP");
+        System.Console.WriteLine("=============Statistics=============");
+        System.Console.WriteLine("Total ticket Sold:"+Ticket.GetTotalticketsSold());
+        System.Console.WriteLine("Booking Refrence 1:" +BookingHelper.GenerateBookingReference());
+        System.Console.WriteLine("Booking Refrence 2:" + BookingHelper.GenerateBookingReference());
+        System.Console.WriteLine("Group Discount(5 Tickets *80EGP):" +BookingHelper.CalcGroupDiscount(5,80));
     }
 }
